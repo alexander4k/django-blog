@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-2 col-sm-3 text-center">
+            <a class="story-img" href="#">
+                <img src="/media/img/profile.jpg" class="img-circle">
+            </a>
+            <p><span class="boldtext">Author:</span> Niel</p>
+        </div>
+        <div class="col-sm-10 col-md-9">
+            {% if posts.image %}
+                <img class="img-blogpost" src="/media/{{ posts.image }}">
+            {% endif %}
+            <h3>{{ posts.title }}</h3>
+            <div class="row">
+                <div class="col-xs-9">
+                    <p>{{ posts.content }}</p>
+                    <p><span class="boldtext">Published on:</span> {{ posts.published_date }}</p>
+                    <p><span class="boldtext">Views:</span> {{ posts.views }}</p>
+                    <p><span class="boldtext">Tag:</span> {{ posts.tag }}</p>
+                    <a href="{% url 'get_posts' %}" class="btn btn-default">back to blog</a>
+                    <a href="{% url 'edit_post' posts.id %}" class="btn btn-default">edit post</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
